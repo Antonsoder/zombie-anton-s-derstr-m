@@ -45,28 +45,36 @@
 
         // Här rensas skärmen så att man inte får något lagg
         clearScreen();
-
+        // Antalet zombisar ska starta med 0
         var i = 0;
 
+        // Här skapar du 10 st zombisar
         while (i < 10)
         {
             var zombie  = zombies[i]
 
-
+            // Ger zombisarna satm min egen gömda mus en synlig bild
             picture(zombie.x, zombie.y, "zombie.png");
 
             picture(mouse.x, mouse.y, "person.png")
 
+            // Om "zombien är mindre än användarens mus i x-led så vet an att zombien är till vänster om användarens mus
+            // och måste då öka sin x-kordinat för att nå användarens mus
             if (zombie.x < mouse.x)
                 zombie.x += zombie.speed;
+            // Tvärtom om mot förut
             else
                 zombie.x -= zombie.speed;
 
+            // Om "zombien är mindre än användarens mus i y-led så vet an att zombien är högre upp än användarens mus
+            // och måste då öka sin y-kordinat för att nå användarens mus
             if (zombie.y < mouse.y)
                 zombie.y += zombie.speed;
+            // Tvärtom mot förut
             else
                 zombie.y -= zombie.speed;
             
+            // Om användaren trycker på mellanslag så ska zombisarnas hastighet öka med 1
             if (keyboard.space){
                 zombie.speed = zombie.speed + 1
             }
@@ -98,7 +106,7 @@
 
 <style>
     body {
-        För att 
+    /* För att få en separat bakgrund i spelet så fixar jag bakgrunden här istället för i body */
     background-image: url(bakgrund2.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;

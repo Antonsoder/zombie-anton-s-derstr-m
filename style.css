@@ -1,4 +1,5 @@
 body {
+    /* Fixar bakgrunden genom att lägga till no repeat, cover och fixed */
     background-image: url(bakgrund.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -6,6 +7,7 @@ body {
 }
 
 h1{
+    /* Possition och färg på min rubrik på startsidan */
    color: white;
    position: absolute;
    transform: translate(50%,-50%);
@@ -14,6 +16,7 @@ h1{
 }
 
 .spelstart {
+    /* Possitionerar, gör min button transparent (dvs ingen bakgrund), och bestämmer storlek  */
     position: absolute;
     transform: translate(50%,-50%);
     left: 9%;
@@ -25,10 +28,12 @@ h1{
 }
 
 .btn1{
+    /* Färgen på min buttons text fixas här  */
     text-decoration: none;
-    color: black;
+    color: grey;
 }
 
 .btn1:hover{
+    /* Om man håller över texten på min button så ska textern bli vit */
     color:white;
 }
