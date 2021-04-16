@@ -84,11 +84,12 @@
             {
                 // Om man dör ska volymen stannas, man ska få ett meddelande, funktionen ska stoppas
                 // Man ska komma tillbaka till startsidan och musen ska visas igen
+                showMouse();
                 audio.pause();
                 alert("Game over, tillbak till startsidan:");
                 stopUpdate();
                 window.location.href = "index.html";
-                showMouse();
+                
             }
             // i måste öka med så att inte while loppen håller på för evigt
             i += 1;
