@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <script src="http://spelprogrammering.nu/simple.js">
+
+    var audio = new Audio('sound.mp3');
+    audio.volume = 0.2;
+    
+    hideMouse();
+
+
 
     var zombies = [];
 
@@ -24,6 +32,9 @@
 
     function update()
     {
+
+        audio.play();
+
         clearScreen();
 
         var i = 0;
@@ -32,7 +43,10 @@
         {
             var zombie  = zombies[i]
 
-            picture(zombie.x, zombie.y, "http://spelprogrammering.nu/bilder/zombie.png");
+
+            picture(zombie.x, zombie.y, "zombie.png");
+
+            picture(mouse.x, mouse.y, "person.png")
 
             if (zombie.x < mouse.x)
                 zombie.x += zombie.speed;
@@ -43,19 +57,23 @@
                 zombie.y += zombie.speed;
             else
                 zombie.y -= zombie.speed;
+            
+            if (keyboard.space){
+                zombie.speed = zombie.speed + 1
+            }
 
             if(distance(mouse, zombie) < 5)
             {
-                alert("Game over");
+                audio.pause();
+                alert("Game over, tillbak till startsidan:");
                 stopUpdate();
+                window.location.href = "index.html";
+                showMouse();
             }
             i += 1;
+            
         }
    }
-    
-    
-    
-    
     
     </script>
     <meta charset="UTF-8">
@@ -64,6 +82,16 @@
     <title>Zombie spel</title>
 </head>
 <body>
-    
+
+<style>
+    body {
+    background-image: url(bakgrund.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+</style>
+
 </body>
 </html>
