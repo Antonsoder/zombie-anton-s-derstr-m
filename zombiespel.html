@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <script src="http://spelprogrammering.nu/simple.js">
-
+    <!-- För att länka till javascript biblioteket -->
+    <script src="http://spelprogrammering.nu/simple.js"> 
+    
+    // Skapar en variabel "Audio" och ger den ett mp3 sound. Samt bestämmer volymen
     var audio = new Audio('sound.mp3');
     audio.volume = 0.2;
     
+    // När man startar spelet så ska det inte finnas någon synlig mus
     hideMouse();
 
 
-
+    // Skapar en variabel för zombisarna och lägger dem i en tom lista
     var zombies = [];
-
+    
+    // Variabeln i = antalet zombies. Detta använder man för göra koden snyggare och inte behöva 10 st "zombie.push"
     var i = 0;
 
+    // Varje gång while satsen körs ökar i med 1, dvs att denna while satsen kommer att köras 10 ggr, vilket leder till 10 st zombies
     while (i < 10)
         {
             zombies.push({
@@ -25,16 +29,21 @@
         i += 1;
         }
 
+
+    // Här bestämms hastigheten och ett random ställe där zombisarna ska börja i spelet
     var zombie = {
         x: random(totalWidth),
         y: random(totalHeight),
         speed: random(1,5)};
 
+
+    // Här startas spelet i en update funktion, dvs att den kontinuerligt uppdateras.
     function update()
     {
-
+        // När spelet har startats ska också musiken startas
         audio.play();
 
+        // Här rensas skärmen så att man inte får något lagg
         clearScreen();
 
         var i = 0;
@@ -62,14 +71,18 @@
                 zombie.speed = zombie.speed + 1
             }
 
+            // Om avståndet mellan musen och en zombie är mindre än 5 pixlar så ska denna if satsen köras
             if(distance(mouse, zombie) < 5)
             {
+                // Om man dör ska volymen stannas, man ska få ett meddelande, funktionen ska stoppas
+                // Man ska komma tillbaka till startsidan och musen ska visas igen
                 audio.pause();
                 alert("Game over, tillbak till startsidan:");
                 stopUpdate();
                 window.location.href = "index.html";
                 showMouse();
             }
+            // i måste öka med så att inte while loppen håller på för evigt
             i += 1;
             
         }
@@ -85,6 +98,7 @@
 
 <style>
     body {
+        För att 
     background-image: url(bakgrund2.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
